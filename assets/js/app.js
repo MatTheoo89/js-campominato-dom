@@ -71,8 +71,9 @@ btnReset.addEventListener('click', function(){
   btnPlay.addEventListener('click', play);
   container.innerHTML = '';
   container.classList.remove('bgc-green')
-
+  elementForRow.value = 0;
 })
+
 
 
 
@@ -96,7 +97,6 @@ function generateSquare(nSquare) {
     square.style.height = `calc(100% / ${levelArray[elementForRow.value]})`;
     square.innerHTML = square.idSquare;
     container.append(square);
-    console.log(this.idSquare);
   }
   }
 
