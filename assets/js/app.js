@@ -100,6 +100,9 @@ function generateSquare(nSquare) {
   }
   }
 
+  // ! numeri random
   function randomNumber(min, max){
-    return randomNum = Math.floor(Math.random() * (min - max + 1)) + min;
+    return randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
+  // ! numero UNICO
