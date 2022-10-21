@@ -27,8 +27,8 @@ Al termine della partita il software deve comunicare il punteggio, cioè il nume
 
 // todo 1 - fare selezionare il livello di difficoltà all'utente
   // - al click collegare inputhtml a js con var
-  // - al click su btn generare la griglia
 // todo 2 - generare la griglia di gioco al CLICK del btn
+  // - al click su btn generare la griglia
 // todo 3 - generare X bombe con numero random UNICO
 // todo 4 - al CLICK della cella
   // * confrontare il NUMERO CELLA se presente nella LISTA NUMERO BOMBE
@@ -46,23 +46,65 @@ const inputGame = document.querySelector('.container-2') // collego container2 (
 const elementForRow = document.querySelector('select'); // prendo l'indice dalla select
 const levelArray = [10, 9, 7, 5];
 const nExponent = 2; // numero esponente
+const numBomb = 16;
 
-
+// ! INIZIO GAME
 btnPlay.addEventListener('click', play);
 
 function play(){
   const nCelle = Math.pow(levelArray[elementForRow.value], nExponent);
   btnPlay.removeEventListener('click', play)
-  console.log(nCelle);
+
+  container.classList.add('bgc-green',);
+    
+  // richiamo la funzione che genera i quadrati e gli do i parametri
+  generateSquare(nCelle);
 }
 
 
 
 
 
-
+// ! TASTO RESET
 btnReset.addEventListener('click', function(){
 
   btnPlay.addEventListener('click', play);
+  container.innerHTML = '';
+  container.classList.remove('bgc-green')
 
 })
+
+
+
+
+
+
+
+// ! ⏬⏬⏬⏬⏬⏬⏬ FUNZIONI ⏬⏬⏬⏬⏬⏬⏬
+
+// creo una funzione che genera il ciclo per generare e stampare in pagina i quadrati
+function generateSquare(nSquare) {
+// qui genero fisicamente i quadrati
+  for(let i = 0; i < nSquare; i++){
+    
+    // creo elemento div e assegno classe
+    let square = document.createElement('div');
+    square.classList.add('square')
+    console.log(square);
+
+    // creo proprietà custom
+    const squareNum = i + 1;
+    square.idSquare = squareNum;
+    square.style.width = `calc(100% / ${levelArray[elementForRow.value]})`;
+    square.style.height = `calc(100% / ${levelArray[elementForRow.value]})`;
+    square.addEventListener('click', function(){
+      this.innerHTML = this.idSquare;
+    })
+    container.append(square);
+    console.log(squareNum);
+  }
+  }
+
+  function randomNumber(min, max){
+    return randomNum = Math.floor(Math.random() * (min - max + 1)) + min;
+  }
