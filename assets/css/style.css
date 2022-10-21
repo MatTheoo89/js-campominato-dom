@@ -18,10 +18,18 @@ h1 {
   text-transform: uppercase;
 }
 
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
 button {
   font-size: 2.3rem;
   font-weight: 900;
   letter-spacing: 4px;
+  margin-right: 25px;
   margin-bottom: 40px;
   padding: 10px 30px;
   background-color: #354f52;
@@ -84,4 +92,12 @@ button {
 
 .bgc-yellow {
   background-color: yellow;
+}
+
+.bgc-bomb {
+  background-color: rgba(61, 0, 0, 0.7);
+}
+
+.bgc-safe {
+  background-color: rgba(172, 255, 47, 0.8);
 }
