@@ -8,13 +8,32 @@ const levelSelect = document.querySelector('select');
 const levelTarget = [10, 9, 7, 5];
 const nExponent = 2;
 const numBomb = 16;
-let bombsGenerated = [];
+let bombsCreate = [];
+let score = 0;
 
+
+
+
+
+// ! START GAME
 btnPlay.addEventListener('click', play);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // ! TASTO RESET
 btnReset.addEventListener('click', function(){
-
+  
   btnPlay.addEventListener('click', play);
   container.innerHTML = '';
   container.classList.remove('bgc-green')
@@ -28,8 +47,10 @@ function play(){
   btnPlay.removeEventListener('click', play)
   
   container.classList.add('bgc-green');
-
+  
   generateSquare(totalSquare);
+  
+  createBombs(totalSquare);
   
 }
 
@@ -59,3 +80,21 @@ function generateSquare(nSquare) {
       container.append(square);
     }
     }
+
+function createBombs (totalSquare){
+  let bombs = [];
+
+  while (bombs.length < numBomb) {
+    let numberOfBomb = randomNumber (1, totalSquare)
+
+  if (!bombs.includes(numberOfBomb)){
+    bombs.push(numberOfBomb);
+  }
+}
+  bombsCreate = bombs;
+    }
+
+function randomNumber (min, max){
+  let numGenerate = Math.floor(Math.random() * (max - min + 1)) + min;
+  return numGenerate;
+}
