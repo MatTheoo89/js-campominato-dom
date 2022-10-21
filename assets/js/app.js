@@ -106,3 +106,14 @@ function generateSquare(nSquare) {
   }
 
   // ! numero UNICO
+  let randomList = [];
+function uniqueNumber (numElements){
+  let randomId;
+
+  do{
+    randomId = randomNumber(1, numElements);
+  }
+  while(randomList.includes(randomId));
+  randomList.push(randomId);
+  return randomId
+}
