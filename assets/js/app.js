@@ -86,22 +86,17 @@ btnReset.addEventListener('click', function(){
 function generateSquare(nSquare) {
 // qui genero fisicamente i quadrati
   for(let i = 0; i < nSquare; i++){
-    
     // creo elemento div e assegno classe
     let square = document.createElement('div');
     square.classList.add('square')
-    console.log(square);
-
     // creo proprietà custom
     const squareNum = i + 1;
     square.idSquare = squareNum;
     square.style.width = `calc(100% / ${levelArray[elementForRow.value]})`;
     square.style.height = `calc(100% / ${levelArray[elementForRow.value]})`;
-    square.addEventListener('click', function(){
-      this.innerHTML = this.idSquare;
-    })
+    square.innerHTML = square.idSquare;
     container.append(square);
-    console.log(squareNum);
+    console.log(this.idSquare);
   }
   }
 
