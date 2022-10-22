@@ -53,6 +53,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 80px;
+  position: relative;
 }
 
 .container-2 {
@@ -101,4 +102,13 @@ button {
 
 .bgc-safe {
   background-color: rgba(172, 255, 47, 0.8);
+}
+
+.block-click {
+  background-color: rgba(24, 24, 24, 0.274);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }

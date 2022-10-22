@@ -15,18 +15,10 @@ let score = 0;
 
 
 
+
+
 // ! START GAME
 btnPlay.addEventListener('click', play);
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -38,6 +30,7 @@ btnReset.addEventListener('click', function(){
   container.innerHTML = '';
   container.classList.remove('bgc-green')
   levelSelect.value = 0;
+  document.querySelector('.end-game').innerHTML = '';
 })
 
 
@@ -56,7 +49,59 @@ function play(){
 
 
 
+function squareClickCell(){
+    
+  if(!bombsCreate.includes(this.idSquare)){
+    
+    this.classList.add('bgc-safe'); 
+    
+    score++;
 
+    const cells = document.getElementsByClassName('square');
+
+    if(score === cells.length - numBomb){
+
+      endGame(true);
+    }
+  }else{
+    endGame(false);
+  }
+}
+
+function endGame(isWin){
+  let msg;
+  const cells = document.getElementsByClassName('square');
+
+  if(isWin){
+    msg = `Congratulazioni! Hai vinto!`;
+  }else{
+    msg = `Game over. il tuo punteggio è: ${score} su ${(cells.length - numBomb)}`;
+  }
+
+
+  document.querySelector('.end-game').innerHTML = msg;
+
+  showBombs();
+
+    const gameOver = document.createElement('div');
+    gameOver.classList.add('block-click');
+    document.querySelector('.container.bgc-green').append(gameOver);
+  }
+
+
+  function showBombs() {
+    const cells = document.getElementsByClassName('square');
+  
+    for(let i = 0; i < cells.length; i++){
+  
+      const cell = cells[i];
+  
+      // se i è in array bombe agggiungo classe 
+      if(bombsCreate.includes(cell.idSquare)){
+        cell.classList.add('bgc-bomb');
+      }
+    }
+  }
 
 
 
@@ -78,6 +123,9 @@ function generateSquare(nSquare) {
       square.style.height = `calc(100% / ${levelTarget[levelSelect.value]})`;
       square.innerHTML = square.idSquare;
       container.append(square);
+
+      square.addEventListener('click', squareClickCell);
+
     }
     }
 
